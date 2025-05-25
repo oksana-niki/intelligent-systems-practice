@@ -1,0 +1,38 @@
+@startuml Общая_структура_университета_АГТУ
+title Общая семантическая сеть АГТУ (высокоуровневая)
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam entityStyle rectangle
+skinparam backgroundColor #FAFAFA
+skinparam shadowing true
+skinparam roundcorner 20
+
+' Ректор
+participant "Неваленный\nАлександр Николаевич" as Rector #LightBlue
+
+participant "АГТУ" as AGTU #Green
+
+' Институты
+participant "Институт\nинформационных\nтехнологий и коммуникаций" as IITK #LightGreen
+participant "Институт\nморских технологий,\nэнергетики и транспорта" as IMTET #LightBlue
+participant "Институт\nрыбного хозяйства,\nбиологии и природопользования" as IRHB #LightBlue
+participant "Институт\nэкономики и права" as IEP #LightBlue
+participant "Институт\nнефти и газа" as ING #LightBlue
+participant "Институт\nградостроительства" as IG #LightBlue
+
+' Факультет и система ДПО
+participant "Факультет\nсреднего профессионального\nобразования" as FSPO
+participant "Система\nдополнительного профессионального\nобразования" as DPO
+
+' Связи
+Rector --> AGTU : руководит
+AGTU --> IITK : включает
+AGTU --> IMTET : включает
+AGTU --> IRHB : включает
+AGTU --> IEP : включает
+AGTU --> ING : включает
+AGTU --> IG : включает
+AGTU --> FSPO : включает
+AGTU --> DPO : включает
+
+@enduml

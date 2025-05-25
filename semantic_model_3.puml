@@ -1,0 +1,66 @@
+@startuml Учебный_процесс_в_ИИТиК
+title Учебный процесс на кафедре АСОИУ
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam participantStyle rectangle
+skinparam shadowing true
+skinparam roundcorner 20
+
+' Направления
+participant "Бакалавриат\n09.03.04 «Программная инженерия»" as Step1
+
+' Кафедра
+participant "Кафедра АСОИУ" as DeptASOIU #Green
+
+' Направления
+participant "Магистратура\n09.04.01 «Информатика и вычислительная техника»" as Step2 #LightGreen
+
+' Курсы
+participant "Прикладные интеллектуальные\nсистемы и экспертные системы" as Course1 #LightBlue
+participant "Прикладные задачи\nанализа данных" as Course2 #LightBlue
+participant "Методы\nоптимизации" as Course3 #LightBlue
+participant "Создание приложений\nискусственного интеллекта на языке python" as Course4 #LightBlue
+
+' Преподаватели
+participant "Д/Н:\nПопов Г.А." as ProfPopov #LightYellow
+participant "Д/Н:\nХоменко Т.В." as ProfKhomenko #LightYellow
+participant "К/Н:\nБелов С.В." as ProfBelov #LightYellow
+
+' Студенты
+participant "Студент:\nНикифорова О.В." as Student1 #LightGray
+participant "Студент:\nНазарова А.Г." as Student2 #LightGray
+
+' Связи: кто где
+DeptASOIU --> Step1 : включает
+DeptASOIU --> Step2 : включает
+
+Step2 --> Course1 : включает
+Step2 --> Course2 : включает
+Step2 --> Course3 : включает
+Step2 --> Course4 : включает
+
+ProfKhomenko --> DeptASOIU : заведует
+ProfPopov --> DeptASOIU : преподаёт
+ProfBelov --> DeptASOIU : преподаёт
+
+Course1 --> ProfPopov : читает курс
+Course2 --> ProfPopov : читает курс
+Course3 --> ProfKhomenko : читает курс
+Course4 --> ProfBelov : читает курс
+
+Student1 --> Step2 : обучается на
+Student2 --> Step2 : обучается на
+
+Student1 --> Course1 : проходит курс
+Student1 --> Course2 : проходит курс
+Student1 --> Course3 : проходит курс
+Student1 --> Course4 : проходит курс
+Student1 --> ProfKhomenko : пишет диплом у
+
+Student2 --> Course1 : проходит курс
+Student2 --> Course2 : проходит курс
+Student2 --> Course3 : проходит курс
+Student2 --> Course4 : проходит курс
+Student2 --> ProfPopov : пишет диплом у
+
+@enduml

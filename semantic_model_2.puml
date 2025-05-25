@@ -1,0 +1,32 @@
+@startuml Структура_ИИТиК_АГТУ
+title Структура Института информационных технологий и коммуникаций (ИИТиК)
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam participantStyle rectangle
+skinparam shadowing true
+skinparam roundcorner 20
+
+' Преподаватели
+participant "К/Н:\nБелов С.В." as ProfBelov #LightBlue
+
+' Институт
+participant "ИИТиК" as IITK #Green
+
+' Кафедры
+participant "Кафедра АСОИУ\n(Автоматизированные системы\nобработки информации\nи управления)" as DeptASOIU #LightGreen
+participant "Кафедра связи" as DeptComm
+participant "Кафедра\nприкладной\nинформатики" as DeptPI
+participant "Кафедра\nинформационной\nбезопасности" as DeptIB
+participant "Кафедра\nавтоматики и\nуправления" as DeptAU
+participant "Кафедра\nвысшей и прикладной\nматематики" as DeptMath
+
+' Структура ИИТиК
+IITK --> DeptASOIU : включает
+IITK --> DeptComm : включает
+IITK --> DeptPI : включает
+IITK --> DeptIB : включает
+IITK --> DeptAU : включает
+IITK --> DeptMath : включает
+ProfBelov --> IITK : руководит
+
+@enduml

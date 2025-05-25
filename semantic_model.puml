@@ -1,0 +1,90 @@
+@startuml Структура_АГТУ_и_ИИТиК
+title Семантическая модель Магистратуры АСОИУ
+
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam entityStyle rectangle
+skinparam shadowing true
+skinparam roundcorner 20
+
+' === АГТУ ===
+entity "АГТУ" as AGTU #LightGreen
+
+' Факультет и система ДПО
+entity "Факультет\nсреднего профессионального\nобразования" as FSPO
+entity "Система\nдополнительного профессионального\nобразования" as DPO
+
+package "Институты АГТУ" as Faculties {
+  entity "Институт\nморских технологий" as IMTET
+  entity "Институт\nрыбного хозяйства" as IRHB
+  entity "Институт\nэкономики и права" as IEP
+  entity "Институт\nнефти и газа" as ING
+  entity "Институт\nградостроительства" as IG
+  entity "Институт\nинформационных технологий\nи коммуникаций (ИИТиК)" as IITK #LightGreen
+}
+
+AGTU -up-> FSPO : включает
+AGTU --> Faculties : включает
+AGTU -up-> DPO : включает
+
+' === Структура ИИТиК ===
+package "ИИТиК: Кафедры" as Departments {
+  entity "АСОИУ" as DeptASOIU #LightGreen
+  entity "Кафедра связи" as DeptComm
+  entity "Каф. прикладной информатики" as DeptPI
+  entity "Каф. инф. безопасности" as DeptIB
+  entity "Каф. автоматики и упр." as DeptAU
+  entity "Каф. высшей и прикл. математики" as DeptMath
+}
+
+IITK -right-> Departments : включает
+
+' === Преподаватели ===
+entity "Белов С.В.\n(директор ИИТиК)" as ProfBelov #LightYellow
+entity "Хоменко Т.В.\n(зав. АСОИУ)" as ProfKhomenko #LightYellow
+entity "Попов Г.А.\n(преподаватель)" as ProfPopov #LightYellow
+
+IITK --> ProfBelov : директор
+DeptASOIU --> ProfKhomenko : заведует
+DeptASOIU --> ProfPopov : преподаёт
+DeptASOIU --> ProfBelov : преподаёт
+
+' === Направление (магистратура) ===
+entity "Магистратура\n09.04.01 ИВТ" as Direction #Green
+DeptASOIU --> Direction
+
+' === Курсы ===
+package "Курсы магистратуры" as Courses {
+  entity "Интеллектуальные системы" as Course1 #LightBlue
+  entity "Задачи анализа данных" as Course2 #LightBlue
+  entity "Методы оптимизации" as Course3 #LightBlue
+  entity "ИИ на Python" as Course4 #LightBlue
+}
+
+Direction --> Courses : включает
+
+Course1 --> ProfPopov : читает
+Course2 --> ProfPopov : читает
+Course3 --> ProfKhomenko : читает
+Course4 --> ProfBelov : читает
+
+' === Студенты ===
+entity "Никифорова О.В." as Student1 #LightGray
+entity "Назарова А.Г." as Student2 #LightGray
+
+Direction --> Student1 : обучается
+Direction --> Student2 : обучается
+
+Student1 --> Course1 : проходит
+Student1 --> Course2 : проходит
+Student1 --> Course3 : проходит
+Student1 --> Course4 : проходит
+Student1 --> ProfKhomenko : пишет диплом у
+
+Student2 --> Course1 : проходит
+Student2 --> Course2 : проходит
+Student2 --> Course3 : проходит
+Student2 --> Course4 : проходит
+Student2 --> ProfPopov : пишет диплом у
+
+@enduml
