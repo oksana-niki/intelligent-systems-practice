@@ -6,6 +6,8 @@ skinparam shadowing true
 skinparam roundcorner 15
 skinparam style strictuml
 
+left to right direction
+
 class Курс #LightBlue {
   - название
   - читается преподавателем
